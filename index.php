@@ -21,39 +21,13 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
 Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali.
 */
 
+session_start();
+include __DIR__ . '/variables.php';
+include __DIR__ . '/functions.php';
 
-$char = [
-    'alph' => 'abcdefghijlmnopqrstuvwyxz',
-    'num' => '01234456789',
-    'symb' => '$%&@#+*-_.:,;!?=',
-];
-$charKeys = [
-    'alph',
-    'num',
-    'symb'
-];
-$password = '';
-
-function genPassword($char, $charKeys, &$password)
-{
-    $length = (isset($_POST['length'])) ? ($_POST['length']) : '';
-
-    if (!empty($length) && $length >= 1) {
-        for ($i = 0; $i < $length; $i++) {
-            $itemKey = $charKeys[rand(0, 2)];
-            if ($itemKey == 'alph') {
-                $passwordItem = $char[$itemKey][rand(0, (strlen($char[$itemKey]) - 1))];
-                $password .= rand(0, 1) ? (strtoupper($passwordItem)) : $passwordItem;
-            } else {
-                $password .= $char[$itemKey][rand(0, (strlen($char[$itemKey]) - 1))];
-            }
-        }
-
-    }
-
-}
-;
 genPassword($char, $charKeys, $password);
+$_SESSION['password'] = $password;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,17 +46,15 @@ genPassword($char, $charKeys, $password);
 
 <body>
 
-    <form action="index.php" class="d-flex align-items-center my-3 justify-content-around w-50 m-auto" method="POST">
-
-        <div>
-            <label for="length">Quanti caratteri deve contenere la tua password?</label>
-            <input type="number" class="p-2" name="length" id="length" min="1" step="1">
-        </div>
-        <button type="submit" class="btn bg-secondary fw-bold text-white">Invia</button>
-    </form>
-    <p>
-        <?php echo $password ?>
-    </p>
+    <div class="w-50 m-auto">
+        <form action="index.php" class="d-flex align-items-center my-3 justify-content-between " method="POST">
+            <div>
+                <label for="length">Quanti caratteri deve contenere la tua password?</label>
+                <input type="number" class="p-2" name="length" id="length" min="1" step="1">
+            </div>
+            <button type="submit" class="btn bg-secondary fw-bold text-white">Invia</button>
+        </form>
+    </div>
 
 </body>
 
