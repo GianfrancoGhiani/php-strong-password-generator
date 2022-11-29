@@ -54,7 +54,7 @@ $_SESSION['password'] = $password;
                 <div class="input col-9">
                     <label for="length" class="me-5">Quanti caratteri deve contenere la tua password?</label>
                     <input type="number" class="py-2 px-4 rounded-pill w-auto" name="length" id="length" min="1"
-                        step="1">
+                        max="10" step="1">
                 </div>
                 <button type="submit" class="col-1 offset-1 btn bg-secondary fw-bold text-white">Invia</button>
 
