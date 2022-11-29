@@ -1,6 +1,5 @@
 <?php
-session_start()
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,21 +9,14 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title>Password</title>
+    <title>Error</title>
 </head>
 
 <body>
-    <div class="w-50 m-auto my-5">
-        <h1>Finalmente hai una password "sicura"</h1>
-        <div class="d-flex align-items-center">
-            <h4>eccola:</h4>
-            <div class="mx-5">
-                <?php echo $_SESSION['password'];
-                session_destroy() ?>
-            </div>
-        </div>
-        <a href="index.php">Home</a>
-    </div>
+    <h5 class="my-5 w-25 m-auto bg-danger p-3 rounded-2">Non è stato possibile soddisfare i suoi parametri, numero di
+        caratteri disponibili inferiore alla
+        lunghezza
+        richiesta</h5>
 </body>
 
 </html>

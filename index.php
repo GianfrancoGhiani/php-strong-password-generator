@@ -25,6 +25,8 @@ session_start();
 include __DIR__ . '/variables.php';
 include __DIR__ . '/functions.php';
 
+
+
 genPassword($char, $charKeys, $password);
 $_SESSION['password'] = $password;
 
@@ -46,16 +48,47 @@ $_SESSION['password'] = $password;
 
 <body>
 
-    <div class="w-50 m-auto">
-        <form action="index.php" class="d-flex align-items-center my-3 justify-content-between " method="POST">
-            <div>
-                <label for="length">Quanti caratteri deve contenere la tua password?</label>
-                <input type="number" class="p-2" name="length" id="length" min="1" step="1">
+    <div class="w-50 m-auto container">
+        <form action="index.php" method="POST">
+            <div class="row my-5">
+                <div class="input col-9">
+                    <label for="length" class="me-5">Quanti caratteri deve contenere la tua password?</label>
+                    <input type="number" class="py-2 px-4 rounded-pill w-auto" name="length" id="length" min="1"
+                        step="1">
+                </div>
+                <button type="submit" class="col-1 offset-1 btn bg-secondary fw-bold text-white">Invia</button>
+
             </div>
-            <button type="submit" class="btn bg-secondary fw-bold text-white">Invia</button>
+
+            <div class="row">
+                <div class="col-2 offset-10">
+                    <input type="checkbox" name="charKeys[]" id="charType1" value="alph" checked>
+                    <label for="charType1">Lettere</label>
+                </div>
+                <div class="col-2 offset-10">
+                    <input type="checkbox" name="charKeys[]" id="charType2" value="num" checked>
+                    <label for="charType2">Numeri</label>
+                </div>
+                <div class="col-2 offset-10">
+                    <input type="checkbox" name="charKeys[]" id="charType3" value="symb" checked>
+                    <label for="charType3">Simboli</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">Vuoi che si ripetano i caratteri?</div>
+                <div class="col-1">
+                    <input type="radio" name="repetitive" id="repetitive1" checked value="true">
+                    <label for="repetitive1">Si</label>
+                </div>
+                <div class="col-1">
+                    <input type="radio" name="repetitive" id="repetitive1" value="false">
+                    <label for="repetitive2">No</label>
+                </div>
+
+            </div>
+
         </form>
     </div>
-
 </body>
 
 </html>
